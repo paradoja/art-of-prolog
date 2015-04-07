@@ -35,19 +35,19 @@ son_in_law(Son, Person) :- mother_in_law(Person, Son).
 
 % (iii)
 
-left_of(bike, photo_camera).
+left_of2(bike, photo_camera).
 
-left_of(pencil, sandclock).
-left_of(sandclock, butterfly).
-left_of(butterfly, fish).
+left_of2(pencil, sandclock).
+left_of2(sandclock, butterfly).
+left_of2(butterfly, fish).
 
 % http://stackoverflow.com/questions/16325238/left-of-exercise-from-the-art-of-prolog
 % left_of(X, Y) :- left_of(X, Z), left_of(Z, Y).
-left_of2(X, Y) :- left_of(X, Y).
-left_of2(X, Y) :- left_of(X, Z), left_of2(Z, Y).
+left_of(X, Y) :- left_of2(X, Y).
+left_of(X, Y) :- left_of2(X, Z), left_of(Z, Y).
 
 above(bike, pencil).
-above(bike, Y) :- left_of2(pencil, Y).
+above(bike, Y) :- left_of(pencil, Y).
 above(photo_camera, X) :- above(bike, X).
 
 right_of(X, Y) :- left_of(Y, X).
